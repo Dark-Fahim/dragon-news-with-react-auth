@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import defultProfile from '../../../assets/user.png'
+import defaultProfile from '../../../assets/user.png'
 
 const Navbar = () => {
     const links = <>
@@ -31,7 +31,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <img className="w-10 rounded-full mr-4" src={defultProfile} alt="" />
+                <img className="w-10 rounded-full mr-4" src={defaultProfile} alt="" />
                 <Link className="btn" to={'/login'}>Login</Link>
             </div>
         </div>

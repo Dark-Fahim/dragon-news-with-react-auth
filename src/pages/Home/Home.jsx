@@ -1,5 +1,6 @@
 import Header from "../Shared/Header/Header";
 import Navbar from "../Shared/Navbar/Navbar";
+import RightSideNav from "../Shared/RightSideNav/RightSideNav";
 import BreakingNews from "./BreakingNews/BreakingNews";
 
 
@@ -9,9 +10,8 @@ const Home = () => {
             <Header></Header>
             <BreakingNews></BreakingNews>
             <Navbar></Navbar>
-            <h2 className="text-3xl poppins">this is home</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
                 <div>
                     <h2 className="text-4xl">left</h2>
                 </div>
@@ -19,7 +19,7 @@ const Home = () => {
                     <h2 className="text-4xl">News Coming Soon</h2>
                 </div>
                 <div>
-                    <h2 className="text-4xl">Right</h2>
+                    <RightSideNav></RightSideNav>
                 </div>
             </div>
         </div>
