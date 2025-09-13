@@ -1,13 +1,37 @@
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 import Navbar from "../Shared/Navbar/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext)
     const handleRegister = e => {
         e.preventDefault()
         const form = new FormData(e.currentTarget)
-        console.log(form.get('checkbox'));
-        
+        const name = form.get('name')
+        const email = form.get('email')
+        const photo = form.get('photo')
+        const password = form.get('password')
+        const checkbox = e.target.checkbox.checked
+        if (!checkbox) {
+            const notify = () => toast("Please Accept terms and conditions");
+            notify()
+            return
+        }
+
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(err => {
+            console.error(err)
+        })
+
+        console.log(name, email, password, photo, checkbox);
+
+
     }
     return (
         <div>
@@ -34,11 +58,12 @@ const Register = () => {
                             <label className="label text-[#403F3F] text-xl font-semibold">Password</label>
                             <input type="password" className="input" placeholder="Password" name="password" />
                         </div>
-                        
+
                         <label className="label">
-                            <input type="checkbox" className="checkbox" name="checkbox"/>
+                            <input type="checkbox" className="checkbox" name="checkbox" />
                             Accept Term & Conditions
                         </label>
+                         <ToastContainer />
 
                         <button className="btn btn-neutral mt-4">Register</button>
 
