@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword,signInWithPopup,  onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
 
@@ -7,11 +7,11 @@ import auth from "../firebase/firebase.config";
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext(null)
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loading, setLoading]  = useState(true)
+    const [loading, setLoading] = useState(true)
 
-    const createUser = (email, password)=> {
+    const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
@@ -30,7 +30,7 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, provider)
     }
 
-    useEffect( ()=> {
+    useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             console.log('user in the on auth state changed', currentUser);
             setUser(currentUser)
@@ -38,22 +38,24 @@ const AuthProvider = ({children}) => {
         })
         return () => {
             unSubscribe()
-            
+
         }
     }, [])
     const authInfo = {
         user,
         loading,
         createUser,
-        signIn, 
+        signIn,
         logOut,
         signInWithGoogle
     }
 
     return (
-        <AuthContext.Provider value={authInfo}>
-            {children}
-        </AuthContext.Provider>
+        <div className="p-3">
+            <AuthContext.Provider value={authInfo}>
+                {children}
+            </AuthContext.Provider>
+        </div>
     );
 };
 
