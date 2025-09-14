@@ -20,13 +20,13 @@ const News = () => {
         <div>
             <Header></Header>
             <Navbar></Navbar>
-            <div className="grid grid-cols-1 md:grid-cols-4 mt-5 container mx-auto gap-10" >
+            <div className="grid p-4 grid-cols-1 md:grid-cols-4 mt-5 container mx-auto gap-10" >
                 <div className="col-span-3 space-y-5">
                     <img src={image_url} alt="" />
                     <h2 className="text-[#403F3F] text-xl font-bold">{title}</h2>
                     <p className="text-[#706F6F]">{details} </p>
                     <Link to={'/'} className="btn bg-[#D72050] text-white"><FaArrowLeft /> All News in this Category</Link>
-                    <div className="grid grid-cols-3 gap-4 mt-10">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-10">
                         <div className='space-y-2'>
                             <img src={news1} alt="" />
                             <h2 className='text-lg font-semibold'>Bayern Slams Authorities Over Flight Delay to Club World Cup</h2>
