@@ -8,12 +8,12 @@ import { CiCalendar } from "react-icons/ci";
 const LeftSide = () => {
     const [categories, setCategories] = useState([])
     useEffect(() => {
-        fetch('categories.json')
+        fetch('/categories.json')
         .then(res => res.json())
         .then(data => setCategories(data))
     }, [])
     return (
-        <div className='space-y-3'>
+        <div className='space-y-3 lg:block flex flex-col items-center'>
             <h2 className="text-2xl">All Categories</h2>
             <ul className='space-y-5 mt-5'>
                 {
@@ -22,7 +22,7 @@ const LeftSide = () => {
                     ))
                 }
             </ul>
-            <div className='space-y-2'>
+            <div className='space-y-2 flex flex-col items-center p-4'>
                 <img src={news1} alt="" />
                 <h2 className='text-lg font-semibold'>Bayern Slams Authorities Over Flight Delay to Club World Cup</h2>
                 <div className='flex justify-between'>
@@ -33,7 +33,7 @@ const LeftSide = () => {
                     </div>
                 </div>
             </div>
-            <div className='space-y-2'>
+            <div className='space-y-2 flex flex-col items-center p-4'>
                 <img src={news2} alt="" />
                 <h2 className='text-lg font-semibold'>Bayern Slams Authorities Over Flight Delay to Club World Cup</h2>
                 <div className='flex justify-between'>
@@ -44,7 +44,7 @@ const LeftSide = () => {
                     </div>
                 </div>
             </div>
-            <div className='space-y-2'>
+            <div className='space-y-2 flex flex-col items-center p-4'>
                 <img src={news3} alt="" />
                 <h2 className='text-lg font-semibold'>Bayern Slams Authorities Over Flight Delay to Club World Cup</h2>
                 <div className='flex justify-between'>
