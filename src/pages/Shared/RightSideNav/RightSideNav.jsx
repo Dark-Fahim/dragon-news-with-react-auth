@@ -1,14 +1,29 @@
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
+import { GoogleAuthProvider } from "firebase/auth";
 import QZone1 from '../../../assets/qZone1.png'
 import QZone2 from '../../../assets/qZone2.png'
 import QZone3 from '../../../assets/qZone3.png'
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
+
+const provider = new GoogleAuthProvider()
 const RightSideNav = () => {
+    const {signInWithGoogle} = useContext(AuthContext)
+    const handleSignWithGoogle = () => {
+        signInWithGoogle(provider)
+        .then((result ) => {
+            console.log(result.user);
+        })
+        .catch(err => {
+            console.error(err)
+        })  
+    }
     return (
         <div className="space-y-5 p-2">
             <div className="space-y-5">
                 <h2 className="text-2xl font-bold">Login With</h2>
-                <button className="btn btn-outline w-full hover:border-blue-300 hover:text-blue-500 hover:bg-blue-200">
+                <button onClick={handleSignWithGoogle} className="btn btn-outline w-full hover:border-blue-300 hover:text-blue-500 hover:bg-blue-200">
                     <FaGoogle></FaGoogle>
                     Login with Google
                 </button>
